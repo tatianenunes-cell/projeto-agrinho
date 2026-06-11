@@ -1,1 +1,478 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultivo HidroSustentável - Água no Campo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- PALETA DE CORES E VARIÁVEIS --- */
+        :root {
+            --verde-profundo: #1E352F;   /* Fundo principal e sofisticação */
+            --verde-folha: #3B6043;      /* Elementos secundários e botões */
+            --verde-claro: #729B79;      /* Destaques e links */
+            --verde-suave: #EAEFEA;      /* Fundos claros */
+            --creme-claro: #F9FBFA;      /* Fundo da página */
+            --texto-escuro: #2C3E35;     /* Leitura principal */
+            --branco: #FFFFFF;
+            
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Inter', sans-serif;
+            --transicao: all 0.4s ease;
+        }
+
+        /* --- CONFIGURAÇÕES GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--creme-claro);
+            color: var(--texto-escuro);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fonte-titulo);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER / NAV --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(30, 53, 47, 0.05);
+            transition: var(--transicao);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            color: var(--verde-profundo);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .logo span {
+            color: var(--verde-claro);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-escuro);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transicao);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--verde-claro);
+            transition: var(--transicao);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--verde-folha);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(30, 53, 47, 0.75), rgba(30, 53, 47, 0.85)), 
+                        url('https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: var(--branco);
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+            opacity: 0.9;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--verde-claro);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transicao);
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--branco);
+            transform: translateY(-2px);
+        }
+
+        /* --- SEÇÕES (SOBRE / TECNOLOGIAS) --- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--verde-profundo);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--verde-claro);
+            font-style: italic;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--branco);
+            padding: 40px 30px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(30, 53, 47, 0.02);
+            transition: var(--transicao);
+            border-top: 4px solid var(--verde-suave);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 53, 47, 0.06);
+            border-top-color: var(--verde-folha);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            color: var(--verde-profundo);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* --- CALCULADORA INTERATIVA --- */
+        .calculator-section {
+            background-color: var(--verde-suave);
+        }
+
+        .calc-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--branco);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--verde-profundo);
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D1DCD6;
+            border-radius: 4px;
+            font-family: var(--fonte-corpo);
+            background-color: var(--creme-claro);
+            color: var(--texto-escuro);
+            outline: none;
+            transition: var(--transicao);
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--verde-folha);
+        }
+
+        .calc-btn {
+            width: 100%;
+            background-color: var(--verde-profundo);
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--verde-folha);
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--creme-claro);
+            border-left: 4px solid var(--verde-claro);
+            display: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--verde-profundo);
+            color: var(--branco);
+            padding: 60px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-family: var(--fonte-titulo);
+            font-size: 1.8rem;
+            color: var(--branco);
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: var(--verde-claro);
+        }
+
+        .copy {
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* --- ANIMAÇÕES --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplificação para o exemplo */
+            .hero h1 { font-size: 2.5rem; }
+            .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Gota<span>Viva</span></a>
+                <ul class="nav-links">
+                    <li><a href="#sobre">O Desafio</a></li>
+                    <li><a href="#tecnologias">Tecnologias</a></li>
+                    <li><a href="#calculadora">Simulador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>O Futuro da Agricultura Cultiva-se Gota a Gota</h1>
+                <p>Unindo a sabedoria da terra com a precisão tecnológica para preservar o recurso mais valioso do nosso planeta.</p>
+                <a href="#tecnologias" class="btn">Conhecer Práticas</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="container">
+        <h2 class="section-title">A Água no Campo</h2>
+        <p class="section-subtitle">Eficiência que gera produtividade e preservação</p>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: #4A5C52;">
+            <p>A agricultura é responsável pela maior parte do consumo de água doce no mundo. Adotar métodos sustentáveis de irrigação e manejo não é apenas uma escolha ecológica, mas a garantia de que o campo continuará próspero, resiliente e produtivo para as próximas gerações.</p>
+        </div>
+    </section>
+
+    <section id="tecnologias" style="background-color: #F2F6F3;">
+        <div class="container">
+            <h2 class="section-title">Pilares da Irrigação Sustentável</h2>
+            <p class="section-subtitle">Inovações que transformam o manejo agrícola</p>
+            
+            <div class="grid-cards">
+                <div class="card">
+                    <span class="card-icon">💧</span>
+                    <h3>Gotejamento Subterrâneo</h3>
+                    <p>Aplica a água diretamente na raiz das plantas, reduzindo drasticamente a perda por evaporação e garantindo eficiência superior a 95%.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📊</span>
+                    <h3>Sensores de Umidade</h3>
+                    <p>Monitoramento do solo em tempo real. O sistema só irriga quando a planta realmente precisa, evitando o desperdício e o encharcamento.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🌧️</span>
+                    <h3>Captação Pluvial</h3>
+                    <p>Estruturas planejadas para coletar e armazenar a água das chuvas, criando reservas estratégicas para os períodos de estiagem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculadora" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Simulador de Economia</h2>
+            <p class="section-subtitle">Veja o impacto potencial na sua lavoura</p>
+            
+            <div class="calc-wrapper">
+                <div class="form-group">
+                    <label for="cultura">Tipo de Cultura</label>
+                    <select id="cultura">
+                        <option value="graos">Grãos (Soja/Milho)</option>
+                        <option value="frutas">Fruticultura</option>
+                        <option value="hortalicas">Hortaliças</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="area">Área do Cultivo (em Hectares)</label>
+                    <input type="number" id="area" placeholder="Ex: 15" min="1">
+                </div>
+                <button class="btn calc-btn" onclick="calcularEconomia()">Calcular Impacto</button>
+
+                <div class="result-box" id="resultado">
+                    <p id="texto-resultado"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">Gota<span>Viva</span></a>
+                <p>Cultivando um amanhã mais verde e consciente.</p>
+            </div>
+            <p class="copy">&copy; 2026 GotaViva Sustentabilidade Humana e Agrícola.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de mudança no Header ao rolar a página
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 10px 30px rgba(30, 53, 47, 0.1)';
+            } else {
+                header.style.padding = '0';
+                header.style.boxShadow = '0 2px 20px rgba(30, 53, 47, 0.05)';
+            }
+        });
+
+        // Lógica da Calculadora de Economia
+        function calcularEconomia() {
+            const area = document.getElementById('area').value;
+            const cultura = document.getElementById('cultura').value;
+            const resultBox = document.getElementById('resultado');
+            const resultText = document.getElementById('texto-resultado');
+
+            if (!area || area <= 0) {
+                alert('Por favor, insira uma área válida.');
+                return;
+            }
+
+            // Fatores fictícios aproximados de economia (litros por hectare/ano) utilizando técnicas eficientes
+            let fatorEconomia = 0;
+            if (cultura === 'graos') fatorEconomia = 450000;
+            if (cultura === 'frutas') fatorEconomia = 600000;
+            if (cultura === 'hortalicas') fatorEconomia = 350000;
+
+            const economiaTotal = area * fatorEconomia;
+            
+            // Formatando o número para o padrão brasileiro
+            const economiaFormatada = economiaTotal.toLocaleString('pt-BR');
+
+            resultText.innerHTML = `Ao adotar sistemas inteligentes de irrigação (como gotejamento e sensores), sua propriedade de <strong>${area} hectares</strong> pode economizar aproximadamente <strong>${economiaFormatada} litros</strong> de água por ano, além de reduzir custos com energia!`;
+            
+            // Exibir a caixa de resultados com efeito suave
+            resultBox.style.display = 'block';
+            resultBox.style.animation = 'fadeInUp 0.5s ease';
+        }
+    </script>
+</body>
+</html>
